@@ -1,0 +1,31 @@
+Steps for building React apps#
+Start with a data mockup and UI mockup.
+
+Based on the mockups, break the UI into components.
+
+Build a static version in React.
+
+Figure out what needs to go in state.
+
+Decide where state should live.
+
+Add inverse data flow so state changes based on user input.
+
+Organize components into a hierarchy#
+Now that you’ve decided on your components, arrange them in a hierarchy so you have an outline of parent components and their children. You may want to copy this hierarchy into your own notes or project repo so you can keep track of your progress and organize your work.
+
+InvoiceTable
+
+InvoiceTableHeader
+
+InvoiceTableRow
+
+EditableRowModeButtons
+
+EditableDescriptionCell
+
+EditableRateCell
+
+EditableHoursCell
+
+InvoiceTableAddButton
