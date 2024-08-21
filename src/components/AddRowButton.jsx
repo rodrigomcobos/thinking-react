@@ -2,7 +2,14 @@
 
 function AddRowButton() {
     return (
-        <div>AddRowButton</div>
+        <tr>
+            <td>
+                {/* this stays empty */}
+            </td>
+            <td colSpan={4}>
+                <button>Add Row</button>
+            </td>
+        </tr>
     )
 }
 

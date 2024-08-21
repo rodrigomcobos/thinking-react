@@ -9,12 +9,7 @@ const TEST_DATA = [
 ];
 
 function App() {
-  return (
-    <div>
-      App Div
-      <InvoiceTable />
-    </div>
-  )
+  return (<InvoiceTable />)
 }
 
 export default App;
