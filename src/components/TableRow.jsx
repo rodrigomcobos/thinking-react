@@ -13,12 +13,29 @@ function TableRow({ initialIsEditing, initialInvoiceData }) {
     const { description, rate, hours } = initialInvoiceData //destructured
     const [editMode, setEditMode] = useState(initialIsEditing)
 
+    //Define functions to set editMode back and forth
+    const changeEditMode = () => setEditMode(true) //function to set editMode to true
+    const changeNoEditMode = () => setEditMode(false) //function to set editMode to false
+
+
     return (
         <tr>
-            <ModeButtons isEditing={initialIsEditing} />
-            <DescriptionCell isEditing={initialIsEditing} value={description} />
-            <RateCell isEditing={initialIsEditing} value={rate} />
-            <HoursCell isEditing={initialIsEditing} value={hours} />
+            <ModeButtons
+                isEditing={editMode}
+                editClick={changeEditMode}
+                saveClick={changeNoEditMode} />
+
+            <DescriptionCell
+                isEditing={editMode}
+                value={description} />
+
+            <RateCell
+                isEditing={editMode}
+                value={rate} />
+
+            <HoursCell
+                isEditing={editMode}
+                value={hours} />
         </tr>
     )
 }

@@ -37,11 +37,47 @@ h1 {
 }
 
 table {
-  border: #f9f9f9 1px solid;
-  border-collapse: collapse;
+  border: none;
+  border-collapse: separate;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
+  background: radial-gradient(circle, #ffffff, #e6e6e6); /* Radial gradient background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Larger shadow for a 3D effect */
+  border-radius: 10px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensures rounded corners are applied to the entire table */
+}
+
+th, td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.2); /* Inner shadow for a pressed-in effect */
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.7); /* Slightly different color for odd rows */
+}
+
+tr:hover {
+  background-color: #d1d1d1; /* Darker background on hover for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover for a raised effect */
+}
+
+td {
+  color: #555;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
 }
 
 button {
@@ -57,11 +93,8 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #646cff;
+  color: black;
 }
 
 @media (prefers-color-scheme: light) {
