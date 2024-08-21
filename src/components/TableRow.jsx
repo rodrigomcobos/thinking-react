@@ -10,8 +10,14 @@ function TableRow({ initialIsEditing, initialInvoiceData }) {
     // const rate = initialInvoiceData.rate
     // const hours = initialInvoiceData.hours
 
-    const { description, rate, hours } = initialInvoiceData //destructured
+
+    // const { description, rate, hours } = initialInvoiceData //destructured
     const [editMode, setEditMode] = useState(initialIsEditing)
+    const [description, setDescription] = useState(initialInvoiceData.description)
+    const [rate, setRate] = useState(initialInvoiceData.rate)
+    const [hours, setHours] = useState(initialInvoiceData.hours)
+
+
 
     //Define functions to set editMode back and forth
     const changeEditMode = () => setEditMode(true) //function to set editMode to true
@@ -27,15 +33,18 @@ function TableRow({ initialIsEditing, initialInvoiceData }) {
 
             <DescriptionCell
                 isEditing={editMode}
-                value={description} />
+                value={description}
+                onValueChange={setDescription} />
 
             <RateCell
                 isEditing={editMode}
-                value={rate} />
+                value={rate}
+                onValueChange={setRate} />
 
             <HoursCell
                 isEditing={editMode}
-                value={hours} />
+                value={hours}
+                onValueChange={setHours} />
         </tr>
     )
 }
