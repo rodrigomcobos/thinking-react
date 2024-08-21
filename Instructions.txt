@@ -29,3 +29,15 @@ EditableRateCell
 EditableHoursCell
 
 InvoiceTableAddButton
+
+ 2b: Build Component Hierarchy
+ What is the highest level component?
+  - Invoice Table
+    - Header
+    - Invoice Row
+      - Mode Buttons
+      - Description
+      - Rate
+      - Hours
+      - Amount
+    - Add button

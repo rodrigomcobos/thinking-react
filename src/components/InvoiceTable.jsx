@@ -1,10 +1,20 @@
 import './InvoiceTable.css';
-
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import AddRowButton from './AddRowButton';
 
-const InvoiceTable = () => {
+const InvoiceTable = ({ initialData }) => {
+
+    const rows = initialData.map((InvoiceItem) => {
+        return (
+            <TableRow
+                key={InvoiceItem.id}
+                initialInvoiceData={InvoiceItem}
+                initialIsEditing={false}
+            />
+        )
+    })
+
     return (
         <div>
             <table>
@@ -13,11 +23,7 @@ const InvoiceTable = () => {
                 </thead>
 
                 <tbody>
-                    <TableRow initialIsEditing={false}
-                        description={"Test description"}
-                        rate={50}
-                        hours={40}
-                    />
+                    {rows}
                 </tbody>
 
                 <tfoot>
