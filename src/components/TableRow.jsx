@@ -4,7 +4,7 @@ import RateCell from './RateCell';
 import HoursCell from './HoursCell';
 import { useState } from 'react';
 
-function TableRow({ initialIsEditing, initialInvoiceData }) {
+function TableRow({ initialIsEditing, initialInvoiceData, deleteFunc }) {
 
     // const description = initialInvoiceData.description
     // const rate = initialInvoiceData.rate
@@ -29,7 +29,8 @@ function TableRow({ initialIsEditing, initialInvoiceData }) {
             <ModeButtons
                 isEditing={editMode}
                 editClick={changeEditMode}
-                saveClick={changeNoEditMode} />
+                saveClick={changeNoEditMode}
+                deleteFunc={deleteFunc} />
 
             <DescriptionCell
                 isEditing={editMode}

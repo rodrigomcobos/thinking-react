@@ -4,7 +4,6 @@ import TableRow from './TableRow';
 import AddRowButton from './AddRowButton';
 import { useState } from 'react';
 
-let globalId = 4
 
 const InvoiceTable = ({ initialData }) => {
 
@@ -16,6 +15,7 @@ const InvoiceTable = ({ initialData }) => {
                 key={InvoiceItem.id}
                 initialInvoiceData={InvoiceItem}
                 initialIsEditing={false}
+                deleteFunc={() => deleteRow(InvoiceItem.id)}
             />
         )
     })
@@ -24,14 +24,19 @@ const InvoiceTable = ({ initialData }) => {
     const addRow = () => {
         //create a new object to represent the new row
         const newRow = {
-            id: globalId,
+            id: currentData.length,
             description: 'Description',
             rate: '',
             hours: ''
         }
         //add the new row to currentData
         setCurrentData([...currentData, newRow])
-        globalId++
+    }
+
+    //delete function
+    const deleteRow = (id) => {
+        const filteredData = currentData.filter((el) => el.id !== id)
+        setCurrentData(filteredData)
     }
 
 
