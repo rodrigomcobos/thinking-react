@@ -1,6 +1,6 @@
 // House all of the handler functions
 //set up global variable to mock a DB
-const TEST_DATA = [
+let TEST_DATA = [
   { id: 0, description: 'Content plan', rate: 50, hours: 4 },
   { id: 1, description: 'Copy writing', rate: 50, hours: 2 },
   { id: 2, description: 'Website design', rate: 50, hours: 5 },
@@ -35,6 +35,36 @@ const handlerFunctions = {
     res.send({
       message: 'Invoice added successfully',
       newInvoice: newInvoice,
+    });
+  },
+
+  deleteInvoice: (req, res) => {
+    //extract the value of id from req.params
+    const { id } = req.params;
+    //filter out the invoice with the matching id
+    TEST_DATA = TEST_DATA.filter((invoice) => invoice.id !== +id);
+    //send response
+    res.send({
+      message: 'Invoice deleted successfully',
+      invoices: TEST_DATA,
+    });
+  },
+
+  editInvoice: (req, res) => {
+    //Get values from req.body
+    const { id, description, rate, hours } = req.body;
+    //Find the index of the invoice with the matching id
+    const idx = TEST_DATA.findIndex((invoice) => invoice.id === +id);
+    //Grab the invoice at that index
+    const invoice = TEST_DATA[idx];
+    //Update the invoice
+    invoice.description = description;
+    invoice.rate = +rate;
+    invoice.hours = +hours;
+    //Send response
+    res.send({
+      message: 'Invoice updated successfully',
+      updatedInvoice: invoice,
     });
   },
 };

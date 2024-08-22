@@ -3,6 +3,7 @@ import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import AddRowButton from './AddRowButton';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const InvoiceTable = ({ initialData }) => {
@@ -27,19 +28,25 @@ const InvoiceTable = ({ initialData }) => {
     const addRow = () => {
         //create a new object to represent the new row
         const newRow = {
-            id: currentData.length,
-            description: 'Description',
-            rate: '',
-            hours: ''
+            description: 'Description Placeholder',
+            rate: '1',
+            hours: '1'
         }
-        //add the new row to currentData
-        setCurrentData([...currentData, newRow])
+
+        axios.post('/api/addInvoice', newRow)
+            .then((res) => {
+                setCurrentData([...currentData, res.data.newInvoice])
+            })
     }
 
     //delete function
     const deleteRow = (id) => {
-        const filteredData = currentData.filter((el) => el.id !== id)
-        setCurrentData(filteredData)
+        // const filteredData = currentData.filter((el) => el.id !== id)
+        // setCurrentData(filteredData)
+        axios.delete(`/api/deleteInvoice/${id}`)
+            .then((res) => {
+                setCurrentData(res.data.invoices)
+            })
     }
 
 

@@ -37,6 +37,20 @@ app.get('/api/invoices', handlerFunctions.getInvoices);
 
 app.post('/api/addInvoice', handlerFunctions.addInvoice);
 
+//Third endpoint (DELETE)
+//-Delete a specific row from invoice table
+//-Need an id from req.params
+//-'/api/deleteInvoice/:id' (--> full url here when hosted locally: http://localhost:3000/api/deleteInvoice/:id)
+//-{ message: '' , invoices: [] }
+
+app.delete('/api/deleteInvoice/:id', handlerFunctions.deleteInvoice);
+
+//Forth endpoint (PUT)
+//-Update a specific row in invoice table
+//-Body - {id, description: '', rate: '', hours: ''}
+//-'/api/editInvoice' (--> full url here when hosted locally: http://localhost:3000/api/editInvoice)
+//-{ message: '' , updatedInvoice: { } }
+
 //open up door to server
 ViteExpress.listen(app, 3000, () =>
   console.log('server running on http://localhost:3000')
