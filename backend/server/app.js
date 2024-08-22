@@ -11,15 +11,24 @@ app.use(express.urlencoded({ extended: false })); //allows us to interpret body 
 app.use(express.static('public')); //for certain imports check public directory first
 app.use(express.json()); //allows us to interpret body objs from POST requests
 
-//set up global variable to mock a DB
-const TEST_DATA = [
-  { id: 0, description: 'Content plan', rate: 50, hours: 4 },
-  { id: 1, description: 'Copy writing', rate: 50, hours: 2 },
-  { id: 2, description: 'Website design', rate: 50, hours: 5 },
-  { id: 3, description: 'Website development', rate: 100, hours: 5 },
-];
+import handlerFunctions from './controller.js';
 
 //set up routes
+//Before create endpoints, address the following
+//-What is the purpose of this endpoint?
+//-Will I need any queries/params/body objects?
+//-What will the endpoint string loo like? (url)
+//-What should the response look like? (keep consistent)
+
+//First endpoint (GET)
+//-To serve up an array of our invoice data (TEST_DATA)
+//-No additional client info needed
+//-'/api/invoices' (--> full url here when hosted locally: http://localhost:3000/api/invoices)
+//-{ message: '', invoices: [] --> res.send({ message: '', invoices: [] })}
+
+app.get('/api/invoices', handlerFunctions.getInvoices);
 
 //open up door to server
-ViteExpress.listen(app, 3000, () => console.log('server running on port 3000'));
+ViteExpress.listen(app, 3000, () =>
+  console.log('server running on http://localhost:3000')
+);
