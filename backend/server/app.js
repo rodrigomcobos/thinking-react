@@ -28,6 +28,15 @@ import handlerFunctions from './controller.js';
 
 app.get('/api/invoices', handlerFunctions.getInvoices);
 
+//Second endpoint (POST)
+//-Add new row to invoice table
+//-Body object should look like: { description: '', rate: '', hours: '' }
+//-'/api/addInvoice' (--> full url here when hosted locally: http://localhost:3000/api/addInvoice)
+//-Send back the new object with a message
+//-{ message: '', newInvoice: { } }
+
+app.post('/api/addInvoice', handlerFunctions.addInvoice);
+
 //open up door to server
 ViteExpress.listen(app, 3000, () =>
   console.log('server running on http://localhost:3000')

@@ -2,7 +2,7 @@ import './InvoiceTable.css';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import AddRowButton from './AddRowButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const InvoiceTable = ({ initialData }) => {
@@ -19,6 +19,9 @@ const InvoiceTable = ({ initialData }) => {
             />
         )
     })
+    useEffect(() => {
+        setCurrentData(initialData)
+    }, [initialData])
 
     // in order to give our addRowButton the ability to add value to currentData, we'll need a function
     const addRow = () => {
